@@ -169,7 +169,7 @@ nav.tabs a[aria-current="page"] { border-bottom-color: var(--ink); }
 }
 
 .plate {
-  margin: 2.6rem auto 1.2rem;
+  margin: 1.2rem auto 1.2rem;
   width: min(420px, 80%);
   text-align: center;
 }

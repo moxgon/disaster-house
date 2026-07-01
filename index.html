@@ -25,7 +25,7 @@
     <div class="signup">
       <form id="signup-form" novalidate>
         <input type="email" name="email" placeholder="you@elsewhere.com" aria-label="Email address" autocomplete="email" required>
-        <!-- honeypot: hidden from people, catches bots that fill every field -->
+        <!-- >:) -->
         <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button type="submit">send word</button>
       </form>
@@ -46,8 +46,7 @@
 
   <script>
     (function () {
-      // Paste your Google Apps Script Web App URL here (ends in /exec):
-      var ENDPOINT = "https://script.google.com/macros/s/AKfycbw9ymCKv60IAxjnaMupwgjr5sRDKvBraeVVpicy_mF1ANV5vzgIrEe8q7esIMviV9QOlQ/exec";
+      var ENDPOINT = "https://script.google.com/macros/s/AKfycbx9NBeZhILNS5nduYes4ntksws9c2NK1EmMzAEoAn4AG1MoFQXrT3rRsk1_73DPmpLtlQ/exec";
 
       var form = document.getElementById('signup-form');
       var msg  = document.querySelector('.form-msg');
@@ -55,7 +54,7 @@
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        if (form.company.value) return;              // bot filled the honeypot
+        if (form.company.value) return;            
         var email = form.email.value.trim();
         if (!emailRe.test(email)) {
           msg.textContent = 'That doesn’t look like an email.';
@@ -74,7 +73,7 @@
           body: new URLSearchParams({ email: email, source: 'coming-soon' })
         }).then(function () {
           form.reset();
-          msg.textContent = 'You’re on the list. We’ll send word.';
+          msg.textContent = 'You’re on the list.';
         }).catch(function () {
           msg.textContent = 'Something went wrong — please try again later.';
         }).finally(function () {
