@@ -107,12 +107,20 @@ nav.tabs a[aria-current="page"] { border-bottom-color: var(--ink); }
   font-weight: 700;
   margin: 2.4rem 0 0.4rem;
 }
+.coming-sub {
+  text-align: center;
+  font-style: italic;
+  color: var(--ink);
+  font-size: 1.35rem;
+  margin: 0.3rem 0 0;
+}
 
 .signup {
   max-width: 30rem;
   margin: 1.6rem auto 0.4rem;
   text-align: center;
 }
+
 .signup form {
   display: flex;
   gap: 0.75rem;
@@ -123,13 +131,14 @@ nav.tabs a[aria-current="page"] { border-bottom-color: var(--ink); }
 .signup input[type="email"] {
   flex: 1 1 16rem;
   min-width: 0;
-  background: transparent;
-  border: 0;
-  border-bottom: 1.5px solid var(--rule);
+  background: #ece9e2;                         
+  border: 1px solid rgba(24, 24, 21, 0.04);   
+  border-bottom: 1.5px solid var(--ink);    
+  border-radius: 0;
   color: var(--ink);
   font-family: inherit;
   font-size: 1.05rem;
-  padding: 0.45rem 0.2rem;
+  padding: 0.5rem 0.6rem;
 }
 .signup input[type="email"]::placeholder {
   color: var(--muted);
@@ -138,7 +147,6 @@ nav.tabs a[aria-current="page"] { border-bottom-color: var(--ink); }
 }
 .signup input[type="email"]:focus {
   outline: none;
-  border-bottom-color: var(--ink);
 }
 .signup button {
   font-family: "IM Fell English SC", "IM Fell English", Georgia, serif;

@@ -20,14 +20,15 @@
     </nav>
     <hr class="rule">
     
-    <p class="coming">Coming Soon...</p>
+    <p class="coming">coming soon...</p>
+    <p class="coming-sub">be first through the door</p>
 
     <div class="signup">
       <form id="signup-form" novalidate>
         <input type="email" name="email" placeholder="you@elsewhere.com" aria-label="Email address" autocomplete="email" required>
         <!-- >:) -->
         <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button type="submit">send word</button>
+        <button type="submit">Enter</button>
       </form>
       <p class="form-msg" role="status" aria-live="polite"></p>
     </div>
@@ -73,7 +74,7 @@
           fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: data });
         }
         form.reset();
-        msg.textContent = 'You’re on the list.';
+        msg.textContent = 'You’re in.';
       });
     })();
   </script>
