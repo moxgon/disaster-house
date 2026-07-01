@@ -64,21 +64,16 @@
           msg.textContent = '(form not yet connected)';
           return;
         }
-        var btn = form.querySelector('button');
-        btn.disabled = true;
-        msg.textContent = 'Sending…';
-        fetch(ENDPOINT, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: new URLSearchParams({ email: email, source: 'coming-soon' })
-        }).then(function () {
-          form.reset();
-          msg.textContent = 'You’re on the list.';
-        }).catch(function () {
-          msg.textContent = 'Something went wrong — please try again later.';
-        }).finally(function () {
-          btn.disabled = false;
-        });
+        var data = new FormData();
+        data.append('email', email);
+        data.append('source', 'coming-soon');
+
+        var queued = navigator.sendBeacon && navigator.sendBeacon(ENDPOINT, data);
+        if (!queued) {
+          fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: data });
+        }
+        form.reset();
+        msg.textContent = 'You’re on the list.';
       });
     })();
   </script>
