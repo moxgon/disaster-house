@@ -107,14 +107,6 @@ nav.tabs a[aria-current="page"] { border-bottom-color: var(--ink); }
   font-weight: 700;
   margin: 2.4rem 0 0.4rem;
 }
-.coming-sub {
-  text-align: center;
-  font-style: italic;
-  color: var(--ink);
-  font-size: 1.35rem;
-  margin: 0.3rem 0 0;
-}
-
 .signup {
   max-width: 30rem;
   margin: 1.6rem auto 0.4rem;
@@ -160,7 +152,6 @@ nav.tabs a[aria-current="page"] { border-bottom-color: var(--ink); }
   cursor: pointer;
 }
 .signup button:hover { background: transparent; color: var(--ink); }
-/* honeypot — kept out of sight and out of the tab order */
 .signup .hp {
   position: absolute;
   left: -9999px;
@@ -170,7 +161,9 @@ nav.tabs a[aria-current="page"] { border-bottom-color: var(--ink); }
 }
 .form-msg {
   min-height: 1.2em;
-  margin: 0.9rem 0 0;
+  margin: 0.9rem auto 0;
+  max-width: 26rem;
+  line-height: 1.5;
   font-style: italic;
   font-size: 0.9rem;
   color: var(--muted);
