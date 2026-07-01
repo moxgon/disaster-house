@@ -152,6 +152,21 @@ nav.tabs a[aria-current="page"] { border-bottom-color: var(--ink); }
   cursor: pointer;
 }
 .signup button:hover { background: transparent; color: var(--ink); }
+/* honeypot — kept out of sight and out of the tab order */
+.signup .hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.form-msg {
+  min-height: 1.2em;
+  margin: 0.9rem 0 0;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
 
 .plate {
   margin: 2.6rem auto 1.2rem;

@@ -23,10 +23,13 @@
     <p class="coming">Coming Soon...</p>
 
     <div class="signup">
-      <form onsubmit="return false">
-        <input type="email" name="email" placeholder="you@elsewhere.com" aria-label="Email address" required>
+      <form id="signup-form" novalidate>
+        <input type="email" name="email" placeholder="you@elsewhere.com" aria-label="Email address" autocomplete="email" required>
+        <!-- honeypot: hidden from people, catches bots that fill every field -->
+        <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button type="submit">send word</button>
       </form>
+      <p class="form-msg" role="status" aria-live="polite"></p>
     </div>
 
     <figure class="plate">
@@ -40,5 +43,45 @@
       <a href="mailto:max@disaster.house">Email</a></div>
    </div>
   </main>
+
+  <script>
+    (function () {
+      // Paste your Google Apps Script Web App URL here (ends in /exec):
+      var ENDPOINT = "https://script.google.com/macros/s/AKfycbw9ymCKv60IAxjnaMupwgjr5sRDKvBraeVVpicy_mF1ANV5vzgIrEe8q7esIMviV9QOlQ/exec";
+
+      var form = document.getElementById('signup-form');
+      var msg  = document.querySelector('.form-msg');
+      var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (form.company.value) return;              // bot filled the honeypot
+        var email = form.email.value.trim();
+        if (!emailRe.test(email)) {
+          msg.textContent = 'That doesn’t look like an email.';
+          return;
+        }
+        if (ENDPOINT.indexOf('PASTE_') === 0) {
+          msg.textContent = '(form not yet connected)';
+          return;
+        }
+        var btn = form.querySelector('button');
+        btn.disabled = true;
+        msg.textContent = 'Sending…';
+        fetch(ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: new URLSearchParams({ email: email, source: 'coming-soon' })
+        }).then(function () {
+          form.reset();
+          msg.textContent = 'You’re on the list. We’ll send word.';
+        }).catch(function () {
+          msg.textContent = 'Something went wrong — please try again later.';
+        }).finally(function () {
+          btn.disabled = false;
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
